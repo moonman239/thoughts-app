@@ -24,9 +24,7 @@ RETURNING id, content, created_at
 
 return NextResponse.json(rows[0], { status: 201 })
 } catch (err: unknown) {
-if (err instanceof z.ZodError) {
-return NextResponse.json({ error: err.issues[0]?.message ?? 'Invalid input' }, { status: 400 })
-}
+    console.error(err);
 return NextResponse.json({ error: 'Server or input error' }, { status: 400 })
 }
 }
